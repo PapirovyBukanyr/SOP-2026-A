@@ -8,6 +8,9 @@
 \usepackage{unicode-math}
 \usepackage{luavlna}
 \usepackage{csquotes}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
 
 % --- KONFIGURACE FONTŮ (Tvé původní nastavení) ---
 \setmainfont{STIX Two Text}
@@ -159,11 +162,45 @@ bibencoding=UTF8
 \addbibresource{literatura.bib}
 \fi
 
+% RUČNÍ DEFINICE JAZYKA GAMS
+\lstdefinelanguage{GAMS}{
+	morekeywords={Set, Parameter, Parameters, Variable, Positive, Variables, Equation, Equations, Model, Solve, Display, sum, maximizing, using, LP, all},
+	sensitive=false,
+	morecomment=[l]{*},
+	morecomment=[s]{\$}{},
+	morestring=[b]",
+	morestring=[b]'
+}
+
+% Kód pro GAMS
+\lstset{
+	language=GAMS,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{green!50!black}\itshape,
+	stringstyle=\color{orange},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	numbersep=10pt,
+	backgroundcolor=\color{gray!5},
+	showspaces=false,
+	showstringspaces=false,
+	frame=single,
+	rulecolor=\color{black},
+	tabsize=2,
+	breaklines=true,
+	breakatwhitespace=false,
+	captionpos=b,
+	inputencoding=utf8,
+	extendedchars=true
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \hypersetup{
 	pdftitle={2\_ukol\_do\_SOP\_skupina\_A\_2026},
-	pdfauthor={Filip Brada, Matouš Nawrath, Marek Přibyl, Pavel Štancl, Šimon Vokál},
+	pdfauthor={Filip Brada, Matouš Nawrath, Marek Přibyl, Pavel Štancl, Šimon Volák},
 	pdfsubject={Semestrální práce},
 	pdfkeywords={Optimalizace, Otroctví, Domácí úloha}
 }
@@ -175,8 +212,6 @@ bibencoding=UTF8
 	\subfile{sablony/titulniList.tex}
 	
 	\subfile{sablony/zadaniPrace.tex}
-	
-	\subfile{sablony/abstrakt.tex}
 	
 	\subfile{sablony/prohlaseni.tex}
 	
@@ -207,6 +242,8 @@ bibencoding=UTF8
 	\newpage
 	
 	\subfile{kapitoly/kapitola1}
+	\subfile{kapitoly/kapitola5}
+	\subfile{kapitoly/kapitola6}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	

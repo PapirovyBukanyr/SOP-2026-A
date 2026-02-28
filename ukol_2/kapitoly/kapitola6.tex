@@ -1,0 +1,58 @@
+\documentclass[../sablona-main.tex]{subfiles}
+
+
+\begin{document}
+	\section{Řešení za pomocí GAMS}
+	S využitím kódu:
+	\begin{lstlisting}[caption={Model optimalizace výroby stolů}, label={lst:gams_model}]
+		* Optimalizace vyroby dvou typu stolu
+		* i = index typu stolu (1, 2)
+		Set i /1,2/;
+		
+		* Parametry pro jednotlive typy stolu
+		* potrebny_cas(i)  - cas potrebny na vyrobu 1 kusu typu i (hodiny)
+		* prodejni_cena(i) - prodejni cena jednoho stolu typu i
+		* pocet_noh(i)     - pocet nohou na jednom stole typu i
+		* pocet_skel(i)    - pocet sklenenych desek na jednom stole typu i
+		* pocet_drev(i)    - pocet drevenych desek na jednom stole typu i
+		Parameters 
+		potrebny_cas(i)  /1 0.6, 2 1.5/
+		prodejni_cena(i) /1 200, 2 350/
+		pocet_noh(i)     /1 5,   2 5/
+		pocet_skel(i)    /1 1,   2 0/
+		pocet_drev(i)    /1 0,   2 1/;
+		
+		* Cilova funkce: celkovy zisk z prodeje stolu
+		Variable zisk;
+		
+		* Rozhodovaci promenna: pocet vyrobenych stolu jednotlivych typu
+		Positive Variable pocet(i);
+		
+		* Prehled omezeni modelu
+		Equations drevo, sklo, nohy, vyplata, cas;
+		
+		* Omezeni na maximalni dostupne mnozstvi dreva (50 desek)
+		drevo..  sum(i, pocet_drev(i)*pocet(i)) =L= 50;
+		
+		* Omezeni na maximalni dostupne mnozstvi skla (35 desek)
+		sklo..   sum(i, pocet_skel(i)*pocet(i)) =L= 35;
+		
+		* Omezeni na pocet nohou (300 kusu)
+		nohy..   sum(i, pocet_noh(i)*pocet(i)) =L= 300;
+		
+		* Casove omezeni vyroby (maximalne 63 hodin)
+		cas..    sum(i, potrebny_cas(i)*pocet(i)) =L= 63;
+		
+		* Definice zisku jako souctu trzeb za vyrobene stoly
+		vyplata.. sum(i, prodejni_cena(i)*pocet(i)) =E= zisk;
+		
+		* Definice a reseni modelu linearniho programovani
+		model stoly /all/;
+		solve stoly maximizing zisk using LP;
+		
+		* Vypis optimalniho zisku a poctu vyrobenych stolu
+		display zisk.L, pocet.L;
+	\end{lstlisting} 
+	
+	Po spuštění nám to dalo výsledek 30 skleněných a 30 dřevěných stolů s celkovou tržbou \$16~500.
+\end{document}

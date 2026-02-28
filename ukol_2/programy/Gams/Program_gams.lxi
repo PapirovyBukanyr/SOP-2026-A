@@ -1,0 +1,23 @@
+B 3 C o m p i l a t i o n
+B 53 Equation Listing    SOLVE stoly Using LP From line 39
+D 56 drevo
+D 61 sklo
+D 66 nohy
+D 71 vyplata
+D 76 cas
+B 82 Column Listing      SOLVE stoly Using LP From line 39
+E 85 zisk
+E 92 pocet
+B 110 Range Statistics    SOLVE stoly Using LP From line 39
+B 121 Model Statistics    SOLVE stoly Using LP From line 39
+B 134 Solution Report     SOLVE stoly Using LP From line 39
+F 167 drevo
+F 168 sklo
+F 169 nohy
+F 170 vyplata
+F 171 cas
+G 175 zisk
+G 177 pocet
+B 190 E x e c u t i o n
+I 192 zisk
+I 193 pocet
