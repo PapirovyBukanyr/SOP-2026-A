@@ -1,0 +1,184 @@
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  Set i /1,2/;
+   2  Parameters potrebny_cas(i) /1 0.6, 2 1.5/, prodejni_cena(i) /1 200,2 350/, pocet_noh(i)/1 5,2 5/,
+   3  pocet_skel(i) /1 1,2 0/, pocet_drev(i) /1 0,2 1/;
+   4  Variable zisk;
+   5  Positive Variable pocet(i);
+   6  Equations drevo, sklo, nohy, vyplata, cas;
+   7  drevo.. sum(i,pocet_drev(i)*pocet(i))=L=50;
+   8  sklo.. sum(i,pocet_skel(i)*pocet(i))=L=35;
+   9  nohy.. sum(i,pocet_noh(i)*pocet(i))=L=300;
+  10  cas.. sum(i,potrebny_cas(i)*pocet(i))=L=63;
+  11  vyplata.. sum(i,prodejni_cena(i)*pocet(i))=E=zisk;
+  12   
+  13  model stoly /all/;
+  14  solve stoly maximizing zisk using LP;
+  15  display zisk.L, pocet.L
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  52.5.0 9bc771bf WEX-WEI
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE stoly Using LP From line 14
+
+
+---- drevo  =L=  
+
+drevo..  pocet(2) =L= 50 ; (LHS = 0)
+     
+
+---- sklo  =L=  
+
+sklo..  pocet(1) =L= 35 ; (LHS = 0)
+     
+
+---- nohy  =L=  
+
+nohy..  5*pocet(1) + 5*pocet(2) =L= 300 ; (LHS = 0)
+     
+
+---- vyplata  =E=  
+
+vyplata..  - zisk + 200*pocet(1) + 350*pocet(2) =E= 0 ; (LHS = 0)
+     
+
+---- cas  =L=  
+
+cas..  0.6*pocet(1) + 1.5*pocet(2) =L= 63 ; (LHS = 0)
+     
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE stoly Using LP From line 14
+
+
+---- zisk  
+
+zisk
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+       -1       vyplata
+
+
+---- pocet  
+
+pocet(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       sklo
+        5       nohy
+      200       vyplata
+        0.6     cas
+
+pocet(2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       drevo
+        5       nohy
+      350       vyplata
+        1.5     cas
+
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE stoly Using LP From line 14
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 3.500E+01, 3.000E+02] - Zero values observed as well
+Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+Matrix    [min, max] : [ 6.000E-01, 3.500E+02]
+
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE stoly Using LP From line 14
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           5     SINGLE EQUATIONS            5
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES            3
+NON ZERO ELEMENTS             9
+
+
+GENERATION TIME      =        0.016 SECONDS      4 MB  52.5.0 9bc771bf WEX-WEI
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE stoly Using LP From line 14
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   stoly               OBJECTIVE  zisk
+     TYPE    LP                  DIRECTION  MAXIMIZE
+     SOLVER  CPLEX               FROM LINE  14
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      1 Optimal
+**** OBJECTIVE VALUE            16500.0000
+
+ RESOURCE USAGE, LIMIT          0.000 10000000000.000
+ ITERATION COUNT, LIMIT         2    2147483647
+*** This solver runs with a demo license. No commercial use.
+--- GMO setup time: 0.00s
+--- GMO memory 0.50 Mb (peak 0.50 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.2.0 link memory 0.00 Mb (peak 0.00 Mb)
+--- Starting Cplex
+
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 0.00 ticks)
+
+
+Optimal solution found
+Objective:        16500.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU drevo             -INF           30.0000        50.0000          .          
+---- EQU sklo              -INF           30.0000        35.0000          .          
+---- EQU nohy              -INF          300.0000       300.0000        20.0000      
+---- EQU vyplata             .              .              .            -1.0000      
+---- EQU cas               -INF           63.0000        63.0000       166.6667      
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR zisk              -INF        16500.0000        +INF             .          
+
+---- VAR pocet  
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+1          .            30.0000        +INF             .          
+2          .            30.0000        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 52.5.0  9bc771bf Jan 28, 2026          WEX-WEI x86 64bit/MS Windows - 02/28/26 11:32:32 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     15 VARIABLE zisk.L                =    16500.000  
+
+----     15 VARIABLE pocet.L  
+
+1 30.000,    2 30.000
+
+
+
+EXECUTION TIME       =        0.063 SECONDS      4 MB  52.5.0 9bc771bf WEX-WEI
+
+
+USER: GAMS Demo, for EULA and demo limitations see   G251112+0003Cc-GEN
+      https://www.gams.com/latest/docs/UG%5FLicense.html         DC0000
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\mapri\Documents\SOP\SOP-2026-A\ukol_2\programy\Gams\Program_gams.gms
+Output     C:\Users\mapri\Documents\SOP\SOP-2026-A\ukol_2\programy\Gams\Program_gams.lst
