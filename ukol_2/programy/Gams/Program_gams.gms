@@ -12,4 +12,4 @@ vyplata.. sum(i,prodejni_cena(i)*pocet(i))=E=zisk;
 
 model stoly /all/;
 solve stoly maximizing zisk using LP;
-display zisk.L, pocet.L
+display zisk.L, pocet.L;
