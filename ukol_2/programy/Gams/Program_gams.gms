@@ -8,7 +8,7 @@ Set i /1,2/;
 * pocet_skel(i)    - počet skleněných desek na jednom stole typu i
 * pocet_drev(i)    - počet dřevěných desek na jednom stole typu i
 Parameters potrebny_cas(i) /1 0.6, 2 1.5/, prodejni_cena(i) /1 200,2 350/, pocet_noh(i)/1 5,2 5/,
-pocet_skel(i) /1 1,2 0/, pocet_drev(i) /1 0,2 1/;
+pocet_skel(i) /1 0,2 1/, pocet_drev(i) /1 1,2 0/;
 
 * Cílová funkce: celkový zisk z prodeje stolů
 Variable zisk;
