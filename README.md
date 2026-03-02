@@ -15,6 +15,7 @@ Sdílený repositář na všechny úkoly skupiny A do předmětu SOP na VUT Brno
    ```
    git clone https://github.com/PapirovyBukanyr/SOP-2026-A/
 Je důležité si ho naklonovat a ne jenom stáhnout ZIP, protože pak to nebude propojené.
+
 2. Vytvořte novou větev pro svůj úkol (např. `ukol1-jmeno`) za pomoci příkazu:
    ```
    git checkout -b ukol1-jmeno
@@ -36,6 +37,7 @@ Je důležité si ho naklonovat a ne jenom stáhnout ZIP, protože pak to nebude
     ```
     kde `ukol1-jmeno` je název vaší větve, kterou jste vytvořili v kroku 2.
 7. Po pushnutí své větve vytvořte pull request (PR) na GitHubu, aby ostatní mohli zkontrolovat vaše řešení a případně ho sloučit do hlavní větve (main).
+
 8. Po schválení PR se nezapomeňte na počítači vrátit do hlavní větve a stáhnout nejnovější změny:
    ```
    git checkout main
