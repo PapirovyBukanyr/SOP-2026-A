@@ -20,8 +20,8 @@ Je důležité si ho naklonovat a ne jenom stáhnout ZIP, protože pak to nebude
    git checkout -b ukol1-jmeno
    ```
 3. Přidejte své řešení:
-    - Jdi do kapitol, přidej kapitolu s odpovídajícím číslem úlohy a tam napiš své řešení. Pokud je to potřeba, přidej i obrázky. Obrázky nenechávej pojmenované defaultně, zbytečně se budeme bít o stejné názvy, ale pojmenuj je nějak rozumně, třeba `ukol2-jmeno-1.png` nebo `ukol2-číslo podúlohy-2.png` a tak dále.
-    - Následně přilož kapitolu do hlavního souboru, který je pro druhou úlohu sablona-main.tex, ať se to zkompiluje.
+    - Jdi do složky `Ukol_2/kapitoly/`, přidej kapitolu s odpovídajícím číslem úlohy a tam napiš své řešení. Pokud je to potřeba, přidej i obrázky. Obrázky nenechávej pojmenované defaultně, zbytečně se budeme bít o stejné názvy, ale pojmenuj je nějak rozumně, třeba `ukol2-jmeno-1.png` nebo `ukol2-číslo podúlohy-2.png` a tak dále.
+    - Následně přilož kapitolu do hlavního souboru `Ukol_2/sablona-main.tex`, který je pro druhou úlohu, ať se to zkompiluje.
 4. Přidejte změny do svého commitu pomocí příkazu:
    ```
    git add .
