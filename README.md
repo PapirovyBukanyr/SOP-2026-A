@@ -13,8 +13,7 @@ Sdílený repositář na všechny úkoly skupiny A do předmětu SOP na VUT Brno
 ## Jak přidat část úkolu
 1. Naklonujte repositář do svého počítače pomocí příkazu:
    ```
-   git clone
-    ```
+   git clone https://github.com/PapirovyBukanyr/SOP-2026-A/
 Je důležité si ho naklonovat a ne jenom  stáhnout ZIP, protože pak to nebude propojené.
 2. Vytvořte novou větev pro svůj úkol (např. `ukol1-jmeno`) za pomoci příkazu:
    ```
