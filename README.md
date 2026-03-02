@@ -30,7 +30,7 @@ Je důležité si ho naklonovat a ne jenom stáhnout ZIP, protože pak to nebude
    ```  
 5. Vytvořte commit s popisem změn:
    ```  
-    git commit -m "Přidáno řešení úkolu 1 od Jméno Příjmení"
+    git commit -m "Přidáno řešení úkolu 2 od Jméno Příjmení"
     ```
 6. Pushněte svou větev do repositáře:
    ``` 
