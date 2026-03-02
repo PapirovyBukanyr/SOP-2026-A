@@ -42,6 +42,7 @@ Je důležité si ho naklonovat a ne jenom  stáhnout ZIP, protože pak to nebud
    git checkout main
    git pull origin main
    ```
+   Často se na to zapomíná, právě teď se mi to povedlo...
 ## Důležité poznámky
 - Nezasahujte do kódů druhých, bude to hromada věcí, tak ať je v tom pořádek.
 - Pokud máte nějaké otázky nebo potřebujete pomoc, neváhejte se mě zeptat.
