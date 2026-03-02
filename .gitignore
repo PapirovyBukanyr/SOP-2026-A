@@ -533,5 +533,10 @@ TSWLatexianTemp*
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
 
-# Gams garbage files
-*.lst
+# GAMS
+# Keep GAMS source files (.gms, include files, etc.)
+# Ignore only files generated when running GAMS models in this repo.
+ukol_2/programy/Gams/*.lst
+ukol_2/programy/Gams/*.log
+ukol_2/programy/Gams/*.gdx
+ukol_2/programy/Gams/*.g00
