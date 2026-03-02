@@ -3,7 +3,7 @@ Sdílený repositář na všechny úkoly skupiny A do předmětu SOP na VUT Brno
 
 ## Struktura repositáře
 - `README.md` - soubor s informacemi o repositáři
-- `.gitignore` - soubor pro ignorování nepotřebných souborů a složek (např. `__pycache__/`, `.vscode/`, atd. - nesahat, pokud není potřeba/nevíte, co dělátel, AI tam za nic nepouštějte!)
+- `.gitignore` - soubor pro ignorování nepotřebných souborů a složek (např. `__pycache__/`, `.vscode/`, atd. - nesahat, pokud není potřeba/nevíte, co děláte, AI tam za nic nepouštějte!)
 - `ukol_1/` - složka pro úkol 1
 - `ukol_2/` - složka pro úkol 2
   - `programy/` - složka pro softwarové řešení úkolu 2
