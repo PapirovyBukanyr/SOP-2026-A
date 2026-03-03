@@ -1,0 +1,30 @@
+\documentclass[../sablona-main.tex]{subfiles}
+
+\begin{document}
+\section{Teoretické vlastnosti modelu a diskuse řešení}
+
+V této části jsou rozebrány základní matematické vlastnosti modelu vycházející z grafického znázornění na obrázku \ref{fig: Graficke reseni} a teorie lineárního programování.
+
+\subsection*{Konvexita a charakteristika množiny přípustných řešení}
+Množina přípustných řešení $K$, graficky znázorněná jako zelená oblast, je definována průnikem konečného počtu polorovin určených lineárními nerovnicemi. Z hlediska geometrického se jedná o \emph{konvexní polyedr}. Tato vlastnost je klíčová, neboť v konvexní množině platí, že libovolná úsečka spojující dva body množiny leží celým svým průběhem uvnitř této množiny. Z hlediska optimalizace konvexita zaručuje, že každé lokální optimum je zároveň optimem globálním.
+
+\subsection*{Existence řešení}
+Vzhledem k charakteru omezení je množina přípustných řešení $K$:
+\begin{itemize}
+	\item \emph{Neprázdná} – existuje alespoň jeden bod vyhovující všem omezujícím podmínkám.
+	\item \emph{Omezená a uzavřená (kompaktní)} – v nákresně je ohraničena ze všech stran.
+\end{itemize}
+Podle \emph{Weierstrassovy věty} platí, že spojitá funkce (zde lineární účelová funkce) na kompaktní množině vždy nabývá svého minima i maxima. Existence řešení je tedy matematicky zaručena.
+
+\subsection*{Analýza extrémů}
+Účelová funkce, v grafu reprezentovaná červenou přímkou (izokvanta), je lineární. Optimální řešení úlohy lineárního programování se vždy nachází v \emph{extrémním bodě} (vrcholu) konvexního polyedru. 
+
+Při maximalizaci posouváme izokvantu rovnoběžně ve směru růstu funkce, dokud neopustí množinu $K$. Bodem dotyku je v tomto modelu vrchol $[30, 30]$, který představuje optimální řešení úlohy.
+
+\subsection*{Shrnutí vlastností}
+\begin{itemize}
+	\item Model je lineární a splňuje podmínky konvexity.
+	\item Řešení existuje a je jednoznačné (vzhledem k odlišnému sklonu účelové funkce a omezujících přímek).
+	\item Množina přípustných řešení tvoří kompaktní konvexní obal svých vrcholů.
+\end{itemize}
+\end{document}
