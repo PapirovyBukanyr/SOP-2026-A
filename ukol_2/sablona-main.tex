@@ -207,6 +207,16 @@ bibencoding=UTF8
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\definecolor{ffqqqq}{rgb}{1,0,0}
+\definecolor{qqffqq}{rgb}{0,1,0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 	% --- STRANKY SABLONY ---
 	\subfile{sablony/titulniList.tex}
@@ -242,6 +252,8 @@ bibencoding=UTF8
 	\newpage
 	
 	\subfile{kapitoly/kapitola1}
+	\subfile{kapitoly/kapitola3}
+	\subfile{kapitoly/kapitola4}
 	\subfile{kapitoly/kapitola5}
 	\subfile{kapitoly/kapitola6}
 	

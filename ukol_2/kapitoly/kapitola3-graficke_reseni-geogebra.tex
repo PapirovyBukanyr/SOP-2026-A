@@ -1,0 +1,26 @@
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45]
+	\begin{axis}[
+		x=1.5mm, y=1.5mm,
+		axis lines=middle,
+		ymajorgrids=true,
+		xmajorgrids=true,
+		grid style={line width=.1pt, draw=gray!30}, % Jemnější mřížka
+		xmin=-18, xmax=75,
+		ymin=-11, ymax=43,
+		xtick={-15,-10,...,75},
+		ytick={-10,-5,...,40},
+		]
+		% Zelená plocha - jen jednou a s uzavřeným cyklem
+		\fill[color=qqffqq, fill opacity=0.3] 
+		(0,35) -- (0,0) -- (50,0) -- (50,10) -- (30,30) -- (17.5,35) -- cycle;
+		
+		% Obrys zelené plochy (pokud ho chcete výrazný)
+		\draw[line width=1.5pt, color=qqffqq] 
+		(0,35) -- (0,0) -- (50,0) -- (50,10) -- (30,30) -- (17.5,35) -- cycle;
+		
+		% Červená čára
+		\draw [line width=2pt, color=ffqqqq, domain=-18:75, samples=2] 
+		plot(\x,{(--16500-200*\x)/350});
+		
+	\end{axis}
+\end{tikzpicture}
