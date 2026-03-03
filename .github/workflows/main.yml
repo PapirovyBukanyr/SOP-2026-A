@@ -6,6 +6,9 @@ on:
     paths:
       - 'ukol_2/**'
   pull_request:
+    branches: [ main ]
+    paths:
+      - 'ukol_2/**'
 
 jobs:
   build:
