@@ -1,8 +1,10 @@
 name: Build LaTeX PDF ukol_2
 
+permissions:
+  contents: write
+
 on:
   push:
-    branches: [ main ]
     paths:
       - 'ukol_2/**'
   pull_request:
@@ -31,8 +33,8 @@ jobs:
           name: ukol_2_pdf
           path: ukol_2/sablona-main.pdf
 
-      - name: Commit and push updated PDF
-        if: github.event_name == 'push'
+      - name: Commit and push updated PDF (feature branches only)
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
