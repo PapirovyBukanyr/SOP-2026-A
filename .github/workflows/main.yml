@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Compile with LuaLaTeX
         uses: xu-cheng/latex-action@v3
@@ -29,3 +32,12 @@ jobs:
         with:
           name: ukol_2_pdf
           path: ukol_2/sablona-main.pdf
+
+      - name: Commit generated PDF back to branch
+        if: ${{ github.event_name != 'pull_request' || github.actor == 'github-actions[bot]' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ukol_2/sablona-main.pdf
+          git commit -m "Add generated PDF from CI [skip ci]" || echo "No changes to commit"
+          git push
