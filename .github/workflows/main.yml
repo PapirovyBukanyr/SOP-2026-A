@@ -1,12 +1,10 @@
 name: Build LaTeX PDF ukol_2
 
+permissions:
+  contents: write
+
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'ukol_2/**'
-  pull_request:
-    branches: [ main ]
     paths:
       - 'ukol_2/**'
 
@@ -30,3 +28,18 @@ jobs:
         with:
           name: ukol_2_pdf
           path: ukol_2/sablona-main.pdf
+
+      - name: Commit and push updated PDF (feature branches only)
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet HEAD -- ukol_2/sablona-main.pdf; then
+            echo "No changes in PDF; nothing to commit."
+            exit 0
+          fi
+
+          git add ukol_2/sablona-main.pdf
+          git commit -m "Update generated PDF [skip ci]" || echo "Nothing to commit."
+          git push
