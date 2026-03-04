@@ -13,16 +13,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Compile with LuaLaTeX
-        uses: xu-cheng/latex-action@<commit-sha-for-v2> # v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: ukol_2/sablona-main.tex
           compiler: lualatex
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ukol_2_pdf
           path: ukol_2/sablona-main.pdf
