@@ -1,6 +1,7 @@
-\documentclass[a4paper,12pt]{article}
-
+% !TEX TS-program = lualatex
 % !TeX program = lualatex
+
+\documentclass[a4paper,12pt]{article}
 
 % --- JAZYK A ZÁKLADNÍ NASTAVENÍ ---
 \usepackage[czech]{babel}
@@ -11,6 +12,10 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{float}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usetikzlibrary{arrows.meta,positioning,shapes.multipart}
 
 % --- KONFIGURACE FONTŮ (Tvé původní nastavení) ---
 \setmainfont{STIX Two Text}
@@ -24,7 +29,6 @@
 \usepackage[babel=true,tracking=true,expansion=true,protrusion=true]{microtype}
 \usepackage[hang, small, labelfont=bf, up]{caption}
 \usepackage{graphicx}
-\usepackage{xcolor}
 
 % Doplněno: Moderní tabulky a jednotky (v roce 2026 standard)
 \usepackage{tabularray}
@@ -252,6 +256,7 @@ bibencoding=UTF8
 	\newpage
 	
 	\subfile{kapitoly/kapitola1}
+	\subfile{kapitoly/kapitola2}
 	\subfile{kapitoly/kapitola3}
 	\subfile{kapitoly/kapitola4}
 	\subfile{kapitoly/kapitola5}

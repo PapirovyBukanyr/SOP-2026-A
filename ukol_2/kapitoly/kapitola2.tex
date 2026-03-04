@@ -1,0 +1,71 @@
+\documentclass[../sablona-main.tex]{subfiles}
+
+\begin{document}
+	
+	
+	\section{Matematický model}
+	
+	\subsection{Model s konkrétními daty}
+	Cílem je maximalizovat celkový zisk:
+	\begin{align}
+		\max\; Z &=\max\; (200x_1 + 350x_2).
+	\end{align}
+	
+	Hlavní omezení (4 zdroje):
+	
+	\begin{enumerate}
+		\item \textbf{Nohy:} každý stůl má 5 nohou, k dispozici je 300 nohou:
+		\begin{align}
+			5x_1 + 5x_2 \le 300.
+		\end{align}
+		
+		\item \textbf{Dřevěné desky:} základní model používá 1 dřevěnou desku, k dispozici je 50:
+		\begin{align}
+			x_1 \le 50.
+		\end{align}
+		
+		\item \textbf{Skleněné desky:} luxusní model používá 1 skleněnou desku, k dispozici je 35:
+		\begin{align}
+			x_2 \le 35.
+		\end{align}
+		
+		\item \textbf{Montážní čas:} základní model $0{,}6$ h, luxusní $1{,}5$ h, k dispozici 63 h:
+		\begin{align}
+			0.6x_1 + 1.5x_2 \le 63.
+		\end{align}
+	\end{enumerate}
+	
+	Doména proměnných:
+	\begin{align}
+		x_1 \ge 0,\quad x_2 \ge 0, \quad x_1,x_2\in \mathbb{Z}.
+	\end{align}
+	
+	\subsection{Tabulka dat}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{lccc}
+			\toprule
+			Zdroj / produkt & základní (1) & luxusní (2) & kapacita \\
+			\midrule
+			nohy & 5 & 5 & 300 \\
+			dřevěné desky & 1 & 0 & 50 \\
+			skleněné desky & 0 & 1 & 35 \\
+			montáž (h) & 0.6 & 1.5 & 63 \\
+			\midrule
+			zisk (USD/ks) & 200 & 350 & -- \\
+			\bottomrule
+		\end{tabular}
+		\caption{Vstupní data modelu.}
+	\end{table}
+	
+	\subsection{Obecný tvar modelu}
+	Obecný model pro rozdělení zdrojů mezi produkty za účelem maximalizace zisku lze zapsat jako:
+	
+	\begin{align}
+		\max\; Z &=\max \sum_{j\in J} z_j x_j,\\
+		\quad 
+		\sum_{i\in I} a_{ij} x_j &\le b_i \qquad \forall i\in I,\\
+		x_j &\ge 0 \qquad \forall j\in J .
+	\end{align}
+	
+\end{document}
