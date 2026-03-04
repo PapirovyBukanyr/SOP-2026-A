@@ -40,6 +40,6 @@ jobs:
             exit 0
           fi
 
-          git add ukol_2/sablona-main.pdf
+          git add .
           git commit -m "Update generated PDF [skip ci]" || echo "Nothing to commit."
           git push
