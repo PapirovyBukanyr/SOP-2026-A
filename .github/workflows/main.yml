@@ -77,6 +77,7 @@ jobs:
           git add ukol_2/sablona-main.pdf || true
 
           # Try commit; if no changes, exit gracefully and expose outputs (empty pr_number)
+          git add .
           if git commit -m "Add generated PDF from CI [skip ci]"; then
             git push --set-upstream origin "$BRANCH"
 
