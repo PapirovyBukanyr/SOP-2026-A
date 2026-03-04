@@ -1,0 +1,40 @@
+name: Reject PRs that include generated PDF
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  check-no-generated-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR files for generated PDF
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            if (!pr) throw new Error('No pull_request payload available');
+
+            const author = pr.user?.login || '';
+            const isBot = (pr.user?.type === 'Bot') || author.endsWith('[bot]');
+            const forbidden = 'ukol_2/sablona-main.pdf';
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              per_page: 100
+            });
+
+            const found = files.some(f => f.filename === forbidden);
+
+            if (found && !isBot) {
+              throw new Error(`PR author "${author}" made PR contains "${forbidden}". Remove the generated PDF from the PR! Nebo si tě najdu a bacim tě!`);
+            }
+
+            core.info(`Check passed: pdf_present=${found}, author=${author},
