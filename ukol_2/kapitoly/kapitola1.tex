@@ -1,9 +1,87 @@
 \documentclass[../sablona-main.tex]{subfiles}
 
 \begin{document}
-\section{Ňáká první kapitola}
-\lipsum[1]
-\subsection{Ňáká první podkapitola první kapitoly}
-\lipsum[1-7]	
-\cite{michor_topics_nodate}
+	
+	
+	\section{Analýza problému}
+	
+	\subsection{Slovní analýza}
+	Úloha je typickým příkladem \emph{alokace omezených zdrojů} mezi několik produktů (tzv. \emph{product mix}).
+	Firma volí počty vyrobených kusů dvou výrobků tak, aby nepřekročila dostupné kapacity zdrojů
+	(nohy, desky, montážní čas) a maximalizovala celkový zisk.
+	Předpoklad \uv{vše, co se vyrobí, lze prodat} znamená, že neřešíme poptávková omezení a rozhodující jsou pouze zdrojové kapacity.
+	
+	\subsection{Schéma problému}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[
+			node distance=7mm,
+			box/.style={draw, rounded corners, align=center, text width=48mm, minimum height=16mm},
+			prod/.style={draw, rounded corners, align=left, text width=48mm, minimum height=34mm},
+			arr/.style={-Latex, thick}
+			]
+			% Resources (nahoře, užší)
+			\node[box] (res) {\textbf{ZDROJE (kapacity)}\\[2mm]
+				nohy: $300$\\
+				dřevo: $50$\\
+				sklo: $35$\\
+				montáž: $63$ h};
+			
+			% Products (pod res, blíž k sobě, užší text width => víc řádků)
+			\node[prod, below left=14mm and 6mm of res] (p1) {\textbf{Produkt 1: základní}\\
+				zisk: $200$ dolarů\\
+				spotřeba na kus:\\
+				-- $5$ nohou\\
+				-- $1$ dřevěná deska\\
+				-- $0$ skleněných desek\\
+				-- $0{,}6$ h montáže};
+			
+			\node[prod, below right=14mm and 6mm of res] (p2) {\textbf{Produkt 2: luxusní}\\
+				zisk: $350$ dolarů\\
+				spotřeba na kus:\\
+				-- $5$ nohou\\
+				-- $0$ dřevěných desek\\
+				-- $1$ skleněná deska\\
+				-- $1{,}5$ h montáže};
+			
+			\draw[arr] (res.south west) -- (p1.north);
+			\draw[arr] (res.south east) -- (p2.north);
+			
+		\end{tikzpicture}
+		\caption{Schéma vztahu produktů a omezených zdrojů (alokace kapacit).}
+	\end{figure}
+	\newpage
+	\subsection{Notace}
+	Použijeme následující notaci:
+	
+	\begin{itemize}
+		\item Množina produktů: $j \in J=\{1,2\}$.
+		\item Množina zdrojů: $i \in I=\{\text{nohy},\text{dřevo},\text{sklo},\text{montáž}\} = \{1,2,3,4\} $.
+		\item Rozhodovací proměnné:
+		\[
+		x_1 = \text{počet vyrobených základních stolů},\qquad
+		x_2 = \text{počet vyrobených luxusních stolů}.
+		\]
+		\item Parametry:
+		\begin{itemize}
+			\item $z_j$ ... zisk na kus produktu $j$,
+			\item $a_{ij}$ ... spotřeba zdroje $i$ na jednotku produktu $j$,
+			\item $b_i$ ... dostupná kapacita zdroje $i$.
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection{Klasifikace problému a modelu}
+	Jedná se o \textbf{deterministickou}, \textbf{statickou} (jedno období -
+	týden) optimalizační úlohu s jedním cílem.
+	Model je \textbf{lineární program (LP)}, protože cílová funkce i omezení jsou lineární.
+	Z hlediska reálné interpretace jsou proměnné počty kusů, tedy přirozeně $x_1,x_2\in\mathbb{Z}$.
+	
+	\subsection{Související literatura}
+	Úloha je typická pro lineární programování (product mix). Pro teorii LP a obecné příklady z operačního výzkumu lze použít např. Hillier–Lieberman (OR přehled), Bertsimas–Tsitsiklis (lineární optimalizace) a Vanderbei (LP a simplex).
+	\begin{itemize}
+		\item F. S. Hillier, G. J. Lieberman: \emph{Introduction to Operations Research}.
+		\item D. Bertsimas, J. N. Tsitsiklis: \emph{Introduction to Linear Optimization}.
+		\item R. J. Vanderbei: \emph{Linear Programming: Foundations and Extensions}.
+	\end{itemize}
+
 \end{document}
