@@ -1,0 +1,29 @@
+name: Build LaTeX PDF ukol_2
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'ukol_2/**'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile with LuaLaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: ukol_2
+          root_file: sablona-main.tex
+          compiler: lualatex
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: ukol_2_pdf
+          path: ukol_2/sablona-main.pdf
