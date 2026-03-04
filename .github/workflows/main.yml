@@ -6,6 +6,8 @@ on:
     paths:
       - 'ukol_2/**'
   pull_request:
+    paths:
+      - 'ukol_2/**'
 
 jobs:
   build:
