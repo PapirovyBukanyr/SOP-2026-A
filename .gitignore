@@ -541,3 +541,6 @@ ukol_2/programy/Gams/*.log
 ukol_2/programy/Gams/*.gdx
 ukol_2/programy/Gams/*.lxi
 ukol_2/programy/Gams/*.g00
+
+# PDF files generated from LaTeX compilation
+ukol_2/sablona-main.pdf

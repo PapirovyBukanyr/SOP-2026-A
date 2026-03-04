@@ -1,4 +1,4 @@
-name: Build LaTeX PDF (LuaLaTeX)
+name: Build LaTeX PDF ukol_2
 
 on:
   push:
@@ -18,7 +18,8 @@ jobs:
       - name: Compile with LuaLaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ukol_2/sablona-main.tex
+          working_directory: ukol_2
+          root_file: sablona-main.tex
           compiler: lualatex
 
       - name: Upload PDF
