@@ -1,0 +1,22 @@
+\documentclass[../sablona-main.tex]{subfiles}
+
+\begin{document}
+	\section{Grafické řešení pro změněný zisk (Úkol 8)}
+	Po vykreslení množiny splňující všechny vazebné podmínky a nové účelové funkce $120x + 300y = z$ obdržíme maximální hodnotu zisku pro $z = 12600$. Celá situace je znázorněna na obrázku \ref{fig: Graficke reseni alternativni}.
+	
+	\begin{figure}[H]
+		\centering
+		\input{kapitola8-graficke_reseni-geogebra.tex}
+		\caption{Grafické řešení s alternativními optimálními řešeními} \label{fig: Graficke reseni alternativni}
+	\end{figure}
+	
+	Z obrázku je zřejmé, že zisková přímka je rovnoběžná s hranicí omezující podmínky pro montážní hodiny. Tento jev nastává proto, že obě lineární rovnice mají totožnou směrnici. 
+	
+	Rovnice účelové funkce:
+	$$120x + 300y = z \implies y = -0.4x + \frac{z}{300}$$
+	
+	a pro omezující podmínku montážních hodin dostaneme:
+	$$0.6x + 1.5y = 63 \implies y = -0.4x + 42$$
+	
+	Globálním maximem tak není pouze jeden bod (vrchol), ale všechny body ležící na úsečce, která spojuje vrcholy $(17.5, 35)$ a $(30, 30)$. Každá kombinace výroby na této úsečce přináší stejný, maximální zisk. Jelikož však lze vyrábět pouze celé kusy stolů, zajímají nás tedy výhradně celočíselná řešení. Na dané úsečce se nacházejí přesně tři takovéto kombinace, a to body $(20, 34)$, $(25, 32)$ a $(30, 30)$.
+\end{document}
