@@ -1,7 +1,7 @@
 import pulp
 
 #inicializace modelu
-model = pulp.LpProblem("Maximize_Zisku", pulp.LpMaximize)
+model = pulp.LpProblem("Maximize_Zisku_Notip_Table", pulp.LpMaximize)
 
 #D-dřevěné a S-skleněné stoly
 pocet_D = pulp.LpVariable('x1', lowBound=0, cat='Integer')
