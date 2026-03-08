@@ -39,7 +39,7 @@ def solve_simplex_combinations(A, b):
         print(f"Řešení (v bázických proměnných): {x_sol}")
         print(f"Výsledný vektor v R^4: {full_x}")
         
-        if full_x[0] >= 0 and full_x[1] >= 0 and full_x[2] >= 0 and full_x[3] >= 0:
+        if np.all(full_x >= 0):
             status = "VYHOVUJE"
             results.append(full_x)
         else:
