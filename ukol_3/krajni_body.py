@@ -26,12 +26,11 @@ def solve_simplex_combinations(A, b):
         print(f"Kombinace {i+1}: Sloupce {combo}")
         print(f"Submatice B:\n{B}")
         
-        if np.linalg.det(B) == 0:
+        try:
+            x_sol = np.linalg.solve(B, b)
+        except np.linalg.LinAlgError:
             print("Matice je singulární, nemá inverzi.\n")
             continue
-            
-        B_inv = np.linalg.inv(B)
-        x_sol = np.dot(B_inv, b)
         
         full_x = np.zeros(n)
         for idx, val in zip(combo, x_sol):
