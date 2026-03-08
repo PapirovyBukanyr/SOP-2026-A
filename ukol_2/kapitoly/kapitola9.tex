@@ -1,0 +1,18 @@
+\documentclass[../sablona-main.tex]{subfiles}
+
+\begin{document}
+\section{Návrh nelineárních členů}
+\subsection{Nelinearita v účelové funkci}
+V původním lineárním modelu předpokládáme konstantní zisk \$200, za každý prodaný základní stůl, bez ohledu na objem výroby. V reálném tržním prostředí ovšem poptávka není nekonečná. Pokud firma vyrobí příliš mnoho základních stolů, bojí se, že jim nějaké zbydou a začne zlevňovat, čímž klesne celkový zisk.
+
+Tento jev lze modelovat zavedením kvadratického členu do účelové funkce. Pokud by prodejní cena (a tím i zisk) klesala s množstvím vyrobených kusů $x$, celkový zisk za základní stoly by byl $(200 - x) \cdot x = 200x - x^2$. Účelová funkce by se pak změnila takto:
+$$z = 200x - x^2 + 350y$$
+Záporný kvadratický člen ($-x^2$) zde reprezentuje ztrátu ze snižování marže při nadprodukci, stejná situace by mohla nastat i pro luxusní stoly.
+
+\subsection{Nelinearita v omezujících podmínkách}
+V omezující podmínce pro montážní hodiny model předpokládá, že montáž každého základního stolu trvá konstantních $0.6$ hodiny. V praxi se však dělníci učí dělat svou práci a jde jim to lépe a lépe. S každým dalším smontovaným kusem získávají pracovníci rutinu a čas potřebný na montáž jednoho kusu se zkracuje.
+
+Tento efekt lze modelovat pomocí mocniny menší než $1$. Omezující podmínka pro montážní kapacity by se mohla změnit například takto:
+$$0.6x^{0.9} + 1.5y \le 63$$
+Nelineární člen $x^{0.9}$ zajišťuje, že s rostoucím počtem vyrobených stolů $x$ roste celkový spotřebovaný čas pomaleji než u striktně lineární závislosti, čímž celkový zisk stoupne. Opět by stejná situace mohla nastat i pro dělníky dělající luxusní stoly.
+\end{document}

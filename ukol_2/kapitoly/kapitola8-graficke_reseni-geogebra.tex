@@ -1,0 +1,30 @@
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45]
+	\begin{axis}[
+		x=1.5mm, y=1.5mm,
+		axis lines=middle,
+		ymajorgrids=true,
+		xmajorgrids=true,
+		grid style={line width=.1pt, draw=gray!30},
+		xmin=-18, xmax=75,
+		ymin=-11, ymax=43,
+		xtick={-15,-10,...,75},
+		ytick={-10,-5,...,40},
+		]
+		% Zelená plocha - omezující podmínky (zůstává beze změny)
+		\fill[color=qqffqq, fill opacity=0.3] 
+		(0,35) -- (0,0) -- (50,0) -- (50,10) -- (30,30) -- (17.5,35) -- cycle;
+		
+		% Obrys zelené plochy
+		\draw[line width=1.5pt, color=qqffqq] 
+		(0,35) -- (0,0) -- (50,0) -- (50,10) -- (30,30) -- (17.5,35) -- cycle;
+		
+		% Červená čára - nová účelová funkce pro Z = 12600
+		\draw [line width=2pt, color=ffqqqq, domain=-18:75, samples=2] 
+		plot(\x,{(12600-120*\x)/300});
+
+		% Zvýraznění úsečky alternativních optimálních řešení (mezi body A a B)
+		\draw [line width=3pt, color=blue, dashed] 
+		(17.5,35) -- (30,30);
+		
+	\end{axis}
+\end{tikzpicture}
