@@ -1,6 +1,41 @@
 \documentclass[../sablona-main.tex]{subfiles}
 \begin{document}
 
-\section{Úkol 7}
-Tento úkol byl vynechán...
+\section{Řešení modelu simplexovou metodou}
+Pro vyřešení modelu simplexovým algoritmem musíme úlohu převést z kanonického tvaru na tvar standardní. K původním čtyřem strukturním omezením (nohy, dřevěné desky, skleněné desky a montážní čas) zavedeme nezáporné doplňkové proměnné $s_1, s_2, s_3, s_4 \ge 0$. Tyto proměnné vyrovnávají nerovnosti na rovnice a reprezentují nevyužitou kapacitu jednotlivých zdrojů.
+
+\subsection{Standardní tvar modelu}
+Cílovou funkci maximalizace zisku i omezující podmínky zapíšeme v souladu s obecnou notací modelu:
+
+\begin{equation}
+	\max Z = 200x_1 + 350x_2 + 0 \cdot s_1 + 0 \cdot s_2 + 0 \cdot s_3 + 0 \cdot s_4
+\end{equation}
+
+za podmínek:
+\begin{align}
+	5x_1 + 5x_2 + s_1 &= 300 \quad \text{(nohy)} \\
+	x_1 + s_2 &= 50 \quad \text{(dřevo)} \\
+	x_2 + s_3 &= 35 \quad \text{(sklo)} \\
+	0{,}6x_1 + 1{,}5x_2 + s_4 &= 63 \quad \text{(montáž)}
+\end{align}
+přičemž $x_1, x_2, s_1, s_2, s_3, s_4 \ge 0$.
+
+\subsection{Průběh výpočtu a interpretace}
+Počáteční bazické řešení odpovídá stavu, kdy se nic nevyrábí ($x_1=0, x_2=0$) a veškeré kapacity jsou volné. Algoritmus v každém kroku hledá hranu konvexního polyedru, podél které účelová funkce nejrychleji roste.
+
+\begin{itemize}
+	\item Vstupující proměnná: Jako první vstupuje do báze $x_2$ (luxusní stoly), protože má nejvyšší jednotkový zisk \$350.
+	\item Klíčový prvek: Omezením pro $x_2$ je buď počet skleněných desek (max 35 ks), nebo montážní čas (max 42 ks). Rozhoduje nejpřísnější omezení.
+	\item Iterace: Po provedení pivotových operací docházíme k optimálnímu řešení v bodě $[30, 30]$.
+\end{itemize}
+
+\subsection{Optimální výsledky}
+Simplexová metoda potvrdila výsledky získané grafickým řešením a softwarovými nástroji Excel Solver a GAMS:
+\begin{itemize}
+	\item \textbf{Počet základních stolů ($x_1$):} 30 ks 
+	\item \textbf{Počet luxusních stolů ($x_2$):} 30 ks
+	\item \textbf{Maximální celkový zisk ($Z$):} \$16\,500 
+\end{itemize}
+
+Z hlediska analýzy zdrojů zůstávají doplňkové proměnné $s_2 = 20$ (nevyužité dřevěné desky) a $s_3 = 5$ (nevyužité skleněné desky) nenulové. Zdroje nohy a montážní čas jsou vyčerpány beze zbytku ($s_1=0, s_4=0$), což z nich činí kritická omezení výroby.
 \end{document}
